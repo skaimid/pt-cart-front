@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <a-menu v-model="current" mode="horizontal">
+    <a-menu :selected-keys="[this.$route.path]" mode="horizontal">
       <a-menu-item key="/">
         <router-link to="/"> <a-icon type="mail" />主页 </router-link>
       </a-menu-item>
 
-      <a-menu-item key="login">
-        <router-link to="/login"> <a-icon type="mail" />登录 </router-link>
+      <a-menu-item key="/login" :disabled="$store.state.username">
+        <router-link to="/login"> <a-icon type="mail" />
+          {{$store.state.username ?("您好：" + $store.state.username):"请登录"}}
+        </router-link>
       </a-menu-item>
 
-      <a-menu-item key="profile">
+      <a-menu-item key="/profile">
         <router-link to="/profile"><a-icon type="mail" />管理 </router-link>
       </a-menu-item>
     </a-menu>
@@ -49,4 +51,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

@@ -20,6 +20,9 @@ const router = new VueRouter({
     {
       path: '/profile',
       component: () => import('./views/Profile.vue'),
+      meta:{
+        needLogin:true
+      }
     }
   ]
 })
