@@ -21,17 +21,17 @@ export const getChannels = () => {
 export const deleteChannle = (cid) => {
   return axios.request({
     url: "/api/channels/" + cid,
-    method:"delete"
+    method: "delete"
   })
 }
 
-export const addChannels = (channelName)=>{
+export const addChannels = (channelName) => {
   return axios.request({
     url: "api/channels",
     data: {
       channelName: channelName
     },
-    method:"post"
+    method: "post"
   })
 }
 
@@ -42,8 +42,8 @@ export const login = (username, password) => {
     url: "/auth/login",
     method: "post",
     data: {
-      username:username,
-      password:password
+      username: username,
+      password: password
     },
   });
 };
@@ -61,11 +61,11 @@ export const newLink = (channelId, link) => {
     url: "/api/links",
     method: "post",
     data: {
-      channelId:channelId.toString(),
+      channelId: channelId.toString(),
       link
     },
   })
-  
+
 }
 
 
@@ -73,9 +73,14 @@ export const getRssToken = () => {
   return axios.request({
     url: "/auth/token",
     method: "get",
-    data: {
-
-    },
+    data: {},
   })
+}
 
+export const resetRssToken = () => {
+  return axios.request({
+    url: "/auth/updateToken",
+    method: "get",
+    data: {},
+  })
 }

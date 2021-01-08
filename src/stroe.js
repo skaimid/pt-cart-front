@@ -7,7 +7,7 @@ import {
   validate,
   addChannels,
   newLink,
-  getRssToken,
+  getRssToken, resetRssToken,
 } from "./api/user"; //必须用这种方式引入
 import {setLocal} from "./libs/local"; //引入lib文件夹下的local.js文件中的setLocal方法（往localStorage里存放token）
 
@@ -20,7 +20,7 @@ export default new Vuex.Store({
     username: "",
     channels: [],
     rssToken: "",
-    loginFailed: false,
+    isLogin: false,
   },
   mutations: {
     // //使动画显示
@@ -41,8 +41,8 @@ export default new Vuex.Store({
     setRssToken(state, rssToken) {
       state.rssToken = rssToken;
     },
-    setLoginFailed(state, fail) {
-      state.loginFailed = fail;
+    setIsLogin(state, rs) {
+      state.isLogin = rs;
     },
   },
   // actions存放接口的调用  dispatch actions里面放方法
@@ -56,9 +56,11 @@ export default new Vuex.Store({
       // console.log(r);
       if (r.status === 200) {
         setLocal("token", r.headers.token);
+        commit("setIsLogin", true);
         commit("setUser", username);
         return r.data;
       } else {
+        commit("setIsLogin", false);
         return Promise.reject(r.data); //如果失败，返回一个promise失败态
       }
     },
@@ -96,12 +98,14 @@ export default new Vuex.Store({
         let r = await validate(); //调用user.js中的validate方法，也就是调用验证接口
         if (r.status === 200) {
           // console.log(r)
+          commit("setIsLogin", true);
           commit("setUser", r.data.username);
           // setLocal("token", r.headers.Authorization); //我们说了，验证通过，或者每次切换路由时，都要重新生成token
         }
         // console.log(commit);
         return r.status === 200; //返回token是否失效,true或者false
       } catch (e) {
+        commit("setIsLogin", false);
         return Promise.reject(e)
       }
     },
@@ -122,5 +126,11 @@ export default new Vuex.Store({
         this.commit("setRssToken", r.data.token);
       }
     },
+    async toResetRssToken() {
+      let r = await resetRssToken();
+      if (r.status === 200) {
+        this.commit("setRssToken", r.data.token);
+      }
+    }
   },
 });

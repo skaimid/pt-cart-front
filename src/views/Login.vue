@@ -1,8 +1,20 @@
 <template>
   <div>
-    <a-input v-model="username" placeholder="请输入用户名"></a-input>
-    <a-input v-model="password" placeholder="请输入密码"></a-input>
-    <a-button @click="loginClick">登录</a-button>
+    <a-row>
+      <a-col :span="8">
+        <a-input v-model="username" placeholder="请输入用户名" class="login-input"></a-input>
+      </a-col>
+    </a-row>
+    <a-row>
+      <a-col :span="8">
+        <a-input-password v-model="password" placeholder="请输入密码" class="login-input"></a-input-password>
+      </a-col>
+    </a-row>
+    <a-row>
+      <a-col :span="8">
+        <a-button @click="loginClick" class="login-button">登录</a-button>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
@@ -47,3 +59,13 @@ export default {
   },
 };
 </script>
+
+<style>
+.login-input {
+  margin-bottom: 1rem;
+
+}
+
+.login-button {
+}
+</style>
