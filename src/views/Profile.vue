@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-left: 1rem; margin-top: 1rem; margin-right: 1rem">
     <h1>个人中心</h1>
     <div class="profile-welcome">欢迎您：{{ username() }}</div>
     <div style="margin-bottom: 0.5rem">在此添加新下载链接</div>

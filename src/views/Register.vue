@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-left: 1rem; margin-top: 1rem; margin-right: 1rem">
 
     <a-form-model ref="ruleForm" :model="ruleForm" :rules="rules" v-bind="layout">
       <a-form-model-item has-feedback label="用户名" prop="userName">

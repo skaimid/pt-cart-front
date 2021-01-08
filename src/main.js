@@ -31,7 +31,7 @@ router.beforeEach(async (to, from, next) => {
   } else {
     //不需要登录
     if (isLogin && (to.path === '/login' || to.path === '/register')) {  //如果你访问login或者reg页面，则给你跳到首页面，因为不需要登录
-      next('/')
+      next('/profile')
     } else {
       next()
     }

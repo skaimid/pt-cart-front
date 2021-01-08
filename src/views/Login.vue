@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-left: 1rem; margin-top: 1rem; margin-right: 1rem">
     <a-row>
       <a-col :span="8">
         <a-input v-model="username" placeholder="请输入用户名" class="login-input"></a-input>
