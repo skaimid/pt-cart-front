@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import {
   login,
   validate,
-  getRssToken, resetRssToken,
+  getRssToken, resetRssToken, createAccount,
 } from "./api/user"; //必须用这种方式引入
 import {setLocal} from "./libs/local";
 import {addChannels, deleteChannle, getChannels} from "@/api/channel";
@@ -45,7 +45,18 @@ export default new Vuex.Store({
   },
   // actions存放接口的调用  dispatch actions里面放方法
   actions: {
-    //这里面所有的方法都是异步的
+    async toRegister({commit},{username, password}) {
+      try {
+        console.log(username,password)
+        let r = await createAccount(username, password);
+        commit("setIsLogin",false)
+        return Promise.resolve(r);
+      } catch (e) {
+        commit("setIsLogin",false)
+        return Promise.reject(e)
+      }
+
+    },
 
     //登录方法
     async toLogin({commit}, {username, password}) {

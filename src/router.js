@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import  VueRouter from 'vue-router'
+import VueRouter from 'vue-router'
 import Home from './views/Home.vue'
 
 Vue.use(VueRouter)
@@ -20,9 +20,12 @@ const router = new VueRouter({
     {
       path: '/profile',
       component: () => import('./views/Profile.vue'),
-      meta:{
-        needLogin:true
+      meta: {
+        needLogin: true
       }
+    }, {
+      path: '/register',
+      component: () => import('./views/Register.vue')
     }
   ]
 })

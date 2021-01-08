@@ -12,7 +12,8 @@
     </a-row>
     <a-row>
       <a-col :span="8">
-        <a-button @click="loginClick" class="login-button">登录</a-button>
+        <a-button @click="loginClick" type="primary"> 登录</a-button>
+        <a-button @click="registerClick" style="margin-left: 1rem">注册</a-button>
       </a-col>
     </a-row>
   </div>
@@ -56,6 +57,10 @@ export default {
             });
           });
     },
+    registerClick() {
+      this.$router.push('/register')
+    },
+
   },
 };
 </script>

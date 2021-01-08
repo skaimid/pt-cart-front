@@ -4,35 +4,35 @@ import App from './App';
 import 'ant-design-vue/dist/antd.css';
 import router from './router'
 import store from './stroe'
-import VueClipboard  from 'vue-clipboard2'
+import VueClipboard from 'vue-clipboard2'
 
 Vue.config.productionTip = false;
 
-router.beforeEach(async (to,from,next)=>{
+router.beforeEach(async (to, from, next) => {
   let isLogin = false;
   try {
     isLogin = await store.dispatch('toValidate')  //判断是否登录了
-  }catch (e){
+  } catch (e) {
     isLogin = false;
   }
 
   // needLogin  表示哪些路由需要在登录条件下才能访问
-  let needLogin = to.matched.some(match=>match.meta.needLogin)
-  console.log("needLogin",needLogin);
-  if(needLogin){
+  let needLogin = to.matched.some(match => match.meta.needLogin)
+  console.log("needLogin", needLogin);
+  if (needLogin) {
     //需要登录
-    if(isLogin){
+    if (isLogin) {
       //登录过了
       next()
-    }else{
+    } else {
       //没有登录
       next('/login')
     }
-  }else{
+  } else {
     //不需要登录
-    if(isLogin && to.path === '/login'){  //如果你访问login页面，则给你跳到首页面，因为不需要登录
+    if (isLogin && (to.path === '/login' || to.path === '/register')) {  //如果你访问login或者reg页面，则给你跳到首页面，因为不需要登录
       next('/')
-    }else{
+    } else {
       next()
     }
   }
@@ -40,7 +40,7 @@ router.beforeEach(async (to,from,next)=>{
 
 
 Vue.use(Antd)
-Vue.use( VueClipboard )
+Vue.use(VueClipboard)
 
 
 /* eslint-disable no-new */

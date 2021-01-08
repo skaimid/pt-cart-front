@@ -11,6 +11,19 @@ export const getUser = () => {
   });
 };
 
+export const createAccount = (username, password) => {
+  return axios.request(
+    {
+      url: "/auth/register",
+      method: "post",
+      data: {
+        username,
+        password
+      }
+    }
+  )
+};
+
 // 再向外暴露一个登录的方法，方法内部也是调接口
 // 在登录组件中就可以调用Login方法，需要给方法传递一个用户名
 export const login = (username, password) => {
@@ -31,7 +44,6 @@ export const validate = () => {
     method: "get",
   });
 };
-
 
 export const getRssToken = () => {
   return axios.request({
