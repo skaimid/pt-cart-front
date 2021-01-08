@@ -1,15 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import {
-  getChannels,
-  deleteChannle,
   login,
   validate,
-  addChannels,
-  newLink,
   getRssToken, resetRssToken,
 } from "./api/user"; //必须用这种方式引入
-import {setLocal} from "./libs/local"; //引入lib文件夹下的local.js文件中的setLocal方法（往localStorage里存放token）
+import {setLocal} from "./libs/local";
+import {addChannels, deleteChannle, getChannels} from "@/api/channel";
+import {newLink} from "@/api/link"; //引入lib文件夹下的local.js文件中的setLocal方法（往localStorage里存放token）
 
 Vue.use(Vuex);
 

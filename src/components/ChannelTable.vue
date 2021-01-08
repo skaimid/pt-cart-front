@@ -10,7 +10,9 @@
       </span>
 
       <span slot="action" slot-scope="text, record">
-        <a @click="removeClick(record.channelId)">删除</a> 
+        <a-button size="small" type="primary" v-clipboard:copy="generateRss(record.channelId)" v-clipboard:success="copySuccess">复制链接</a-button>
+        <a-button size="small" type="danger" @click="removeClick(record.channelId)" style="margin-left: 0.5rem">删除</a-button>
+
       </span>
     </a-table>
 
@@ -21,7 +23,7 @@
       :confirm-loading="confirmLoading"
       @ok="handleOk"
       @cancel="handleCancel"
-    ></a-modal>
+    >删除后不可恢复！</a-modal>
   </div>
 </template>
 
@@ -106,6 +108,9 @@ export default {
       this.tempCId = 0;
       this.confirmVis = false;
     },
+    copySuccess(){
+      this.$message.success("拷贝成功")
+    }
   },
 };
 </script>

@@ -4,9 +4,7 @@ import App from './App';
 import 'ant-design-vue/dist/antd.css';
 import router from './router'
 import store from './stroe'
-
-
-
+import VueClipboard  from 'vue-clipboard2'
 
 Vue.config.productionTip = false;
 
@@ -42,6 +40,7 @@ router.beforeEach(async (to,from,next)=>{
 
 
 Vue.use(Antd)
+Vue.use( VueClipboard )
 
 
 /* eslint-disable no-new */
