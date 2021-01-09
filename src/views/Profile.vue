@@ -4,6 +4,7 @@
     <div class="profile-welcome">欢迎您：{{ username() }}</div>
     <div style="margin-bottom: 0.5rem">在此添加新下载链接</div>
     <add-link></add-link>
+    <a-divider>分发频道设置</a-divider>
     <div style="margin-bottom: 0.5rem">在此添加新的分发频道</div>
     <add-channel></add-channel>
     <channel-table></channel-table>

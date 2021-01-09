@@ -17,7 +17,7 @@
       <h2 style="width: 100%;text-align: center; margin: 1rem">
         注册或者登录以开始:
       </h2>
-      <a-button size="big" type="primary" @click="handleNextClick">现在开始</a-button>
+      <a-button size="large" type="primary" @click="handleNextClick">现在开始</a-button>
     </div>
 
     <div style="width: 100%;margin-top: 2rem; text-align: center;padding: 1rem" class="banner-text">
@@ -27,9 +27,6 @@
 </template>
 
 <script>
-//如果用export导出的话，要用这种形式，相当于解构赋值
-// import {getUser} from '../api/user'
-
 import ShowCase from "@/components/ShowCase";
 
 export default {

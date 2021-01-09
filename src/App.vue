@@ -1,5 +1,5 @@
 <template >
-  <div id="app" style="height: 100%">
+  <div id="app" style="height: 100%;">
     <a-menu :selected-keys="[this.$route.path]" mode="horizontal">
       <a-menu-item key="/">
         <router-link to="/">

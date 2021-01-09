@@ -9,10 +9,10 @@ class AjaxRequest {
   constructor() {
     //请求的基础路径
     this.baseURL =
-      process.env.NODE_ENV == "production" ? "/" : "http://localhost:23333";
+      process.env.NODE_ENV === "production" ? "/" : "http://localhost:23333";
     this.timeout = 3000; //超时时间
     this.queue = {}; //存放每一次的请求
-    
+
   }
   //定义一个方法，把options展开
   merge(options) {
