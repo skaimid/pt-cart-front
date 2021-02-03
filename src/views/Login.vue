@@ -41,9 +41,6 @@ export default {
   methods: {
     ...mapActions(["toLogin"]),
     loginClick() {
-      console.log(this.password);
-      //使用获取到的toLogin方法
-
       this["toLogin"]({username: this.username, password: this.password})
           .then((data) => {
             //因为toLogin返回的是一个Promise，所以可以.then

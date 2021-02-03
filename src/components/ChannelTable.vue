@@ -6,29 +6,33 @@
       </span>
 
       <span slot="num" slot-scope="text, record">
-        {{record.linkSet.length}}
+        {{ record.linkSet.length }}
       </span>
 
       <span slot="action" slot-scope="text, record">
-        <a-button size="small" type="primary" v-clipboard:copy="generateRss(record.channelId)" v-clipboard:success="copySuccess">复制链接</a-button>
-        <a-button size="small" type="danger" @click="removeClick(record.channelId)" style="margin-left: 0.5rem">删除</a-button>
+        <a-button size="small" type="primary" v-clipboard:copy="generateRss(record.channelId)"
+                  v-clipboard:success="copySuccess">复制链接</a-button>
+        <a-button size="small" type="danger" @click="removeClick(record.channelId)"
+                  style="margin-left: 0.5rem">删除</a-button>
 
       </span>
     </a-table>
 
     <!-- 删除弹出 -->
     <a-modal
-      title="确认删除？"
-      :visible="confirmVis"
-      :confirm-loading="confirmLoading"
-      @ok="handleOk"
-      @cancel="handleCancel"
-    >删除后不可恢复！</a-modal>
+        title="确认删除？"
+        :visible="confirmVis"
+        :confirm-loading="confirmLoading"
+        @ok="handleOk"
+        @cancel="handleCancel"
+    >删除后不可恢复！
+    </a-modal>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import {mapActions} from "vuex";
+
 export default {
   name: "ChannelTable",
   data() {
@@ -45,17 +49,17 @@ export default {
         {
           title: "现存链接数",
           dataIndex: "num",
-          scopedSlots: { customRender: "num" },
+          scopedSlots: {customRender: "num"},
         },
         {
           title: "订阅链接",
           dataIndex: "link",
-          scopedSlots: { customRender: "link" },
+          scopedSlots: {customRender: "link"},
         },
         {
           title: "操作",
           key: "action",
-          scopedSlots: { customRender: "action" },
+          scopedSlots: {customRender: "action"},
         },
       ],
     };
@@ -73,12 +77,15 @@ export default {
     },
     generateRss(cid) {
       return (
-        "http://127.0.0.1:23333/rss?username=" +
-        this.username() +
-        "&token=" +
-        this.rssToken() +
-        "&channel=" +
-        cid
+          (process.env.NODE_ENV === "production" ?
+              (window.location.protocol + "//" + window.location.host) :
+              "http://localhost:23333")
+          + "/rss?username=" +
+          this.username() +
+          "&token=" +
+          this.rssToken() +
+          "&channel=" +
+          cid
       );
     },
 
@@ -93,26 +100,28 @@ export default {
     handleOk() {
       this.confirmLoading = true;
       this["deleteChannles"](this.tempCId)
-        .then(() => {
-          this.$message.info("删除成功");
-          this.confirmLoading = false;
-          this.confirmVis = false;
-        })
-        .catch((err) => {
-          console.log(err);
-          this.confirmLoading = false;
-          this.confirmVis = false;
-        });
+          .then(() => {
+            this.$message.info("删除成功");
+            this.confirmLoading = false;
+            this.confirmVis = false;
+          })
+          .catch((err) => {
+            console.log(err);
+            this.confirmLoading = false;
+            this.confirmVis = false;
+          });
     },
     handleCancel() {
       this.tempCId = 0;
       this.confirmVis = false;
     },
-    copySuccess(){
+    copySuccess() {
       this.$message.success("拷贝成功")
     }
-  },
-};
+  }
+  ,
+}
+;
 </script>
 
 <style></style>

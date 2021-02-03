@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .content-warp {
-
+  margin-top: 2rem;
   max-width: 85%;
   width: 100%;
   display: flex;

@@ -9,9 +9,9 @@
       </div>
     </div>
     <div class="board">
-      <ShowCase img-url="/images/logo.png" title="test" detail="asdasdasdasdas"></ShowCase>
-      <ShowCase img-url="/images/logo.png" title="tttt" detail="asdasdasdasqwrewq"></ShowCase>
-      <ShowCase img-url="/images/logo.png" title="rerr" detail="ghjfgdfgd"></ShowCase>
+      <ShowCase img-url="/images/1.png" title="安全" detail="独立用户，独立密码和订阅密钥"></ShowCase>
+      <ShowCase img-url="/images/2.png" title="方便" detail="可支持多个设备下载不同内容，支持 Url 和文件方式上传"></ShowCase>
+      <ShowCase img-url="/images/3.png" title="快捷" detail="与一处管理所有订阅"></ShowCase>
     </div>
     <div style="width: 100%;margin-top: 2rem" class="banner-text">
       <h2 style="width: 100%;text-align: center; margin: 1rem">
