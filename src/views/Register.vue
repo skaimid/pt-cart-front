@@ -2,9 +2,9 @@
   <div style="margin-left: 1rem; margin-top: 1rem; margin-right: 1rem">
 
     <a-form-model ref="ruleForm" :model="ruleForm" :rules="rules" v-bind="layout">
-      <a-form-model-ite1m has-feedback label="用户名" prop="userName">
+      <a-form-model-item has-feedback label="用户名" prop="userName">
         <a-input v-model.number="ruleForm.userName"/>
-      </a-form-model-ite1m>
+      </a-form-model-item>
       <a-form-model-item has-feedback label="密码" prop="pass">
         <a-input v-model="ruleForm.pass" type="password" autocomplete="off"/>
       </a-form-model-item>

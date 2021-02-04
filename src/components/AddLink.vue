@@ -85,7 +85,7 @@ export default {
       }
       if (info.file.status === 'done') {
         this.$message.success(`${info.file.name} 上传成功!`);
-        this.newLinkRef = (process.env.NODE_ENV === "production" ? "/" : "http://localhost:23333/")
+        this.newLinkRef = (process.env.NODE_ENV === "production" ? (window.location.protocol + "//" + window.location.host + "/") : "http://localhost:23333/")
             + 'file'
             + '/' + this.$store.state.username
             + '/' + info.file.name

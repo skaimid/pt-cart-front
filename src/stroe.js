@@ -45,14 +45,18 @@ export default new Vuex.Store({
   },
   // actions存放接口的调用  dispatch actions里面放方法
   actions: {
-    async toRegister({commit},{username, password}) {
+    async toRegister({commit}, {username, password}) {
       try {
-        console.log(username,password)
+        console.log(username, password)
         let r = await createAccount(username, password);
-        commit("setIsLogin",false)
+        if (r.data === false) {
+          commit("setIsLogin", false)
+          return Promise.reject()
+        }
+        commit("setIsLogin", false)
         return Promise.resolve(r);
       } catch (e) {
-        commit("setIsLogin",false)
+        commit("setIsLogin", false)
         return Promise.reject(e)
       }
 
