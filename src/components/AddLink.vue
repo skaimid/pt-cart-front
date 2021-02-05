@@ -72,15 +72,13 @@ export default {
             this.selectChannelId = undefined;
             this.newLinkRef = "";
             this.$message.info("新增成功");
+            this.loadFile = false;
           })
           .catch((err) => console.log(err));
-      console.log(
-          "newLink: " + this.newLinkRef + "\nchannelId: " + this.selectChannelId
-      );
+
     },
     handleChange(info) {
       if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
         this.loadFile = true;
       }
       if (info.file.status === 'done') {
@@ -92,6 +90,7 @@ export default {
       } else if (info.file.status === 'error') {
         this.$message.error(`${info.file.name} 上传失败!`);
       }
+
     },
   },
 };
